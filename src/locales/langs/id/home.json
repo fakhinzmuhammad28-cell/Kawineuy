@@ -1,9 +1,9 @@
 {
   "letter": {
     "guest": "Tamu",
-    "dear": "Kepada",
-    "you-are-invited": "Dengan penuh hormat, kami mengundang Anda ke pernikahan kami dalam keberkahan Allah ﷻ",
-    "to": "kepada",
+    "dear": "Kepada Yth.",
+    "you-are-invited": "Dengan segala hormat, kami mengundang Anda untuk hadir pada pernikahan kami dalam keberkahan Allah SWT ﷻ",
+    "to": "Kepada Yth.",
     "invitation-title": "Mengundang Anda untuk turut hadir dalam pernikahan kami",
     "invitation-quote": "Engkau hadir sebagai jawaban dari doa-doaku...",
     "click-to-open-hover": "Klik untuk membuka undangan",
@@ -18,7 +18,7 @@
     "contact": "Pertanyaan? Hubungi kami di alfakh28@gmail.com / 082319210105"
   },
   "hero": {
-    "welcome": "Selamat Datang di Pernikahan Kami",
+    "welcome": "Undangan Pernikahan",
     "together": "Bersama",
     "scroll-down": "Gulir ke Bawah",
     "scroll-to-explore": "Gulir untuk menjelajahi kisah cinta kami",
