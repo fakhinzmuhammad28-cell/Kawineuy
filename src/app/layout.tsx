@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Wedding of Annida & Alif',
     description:
-      'Dengan segala hormat, kami mengundang Anda ke hari bahagia kami',
+      'Dengan segala hormat, kami mengundang Anda untuk hadir pada pernikahan kami dalam keberkahan Allah SWT ﷻ',
     url: 'https://kawineuy.vercel.app',
     siteName: 'Wedding Invitation',
     images: [
       {
-        url: '/assets/images/og-image.jpg', // 🔥 gambar preview
+        url: 'https://kawineuy.vercel.app/og-image.jpg', // 🔥 gambar preview
         width: 1200,
         height: 630,
       },
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'The Wedding of Annida & Alif',
-    description: 'Kami mengundang Anda ke hari bahagia kami',
-    images: ['/og-image.jpg'],
+    description: 'Dengan segala hormat, kami mengundang Anda untuk hadir pada pernikahan kami dalam keberkahan Allah SWT ﷻ',
+    images: ['https://kawineuy.vercel.app/og-image.jpg'],
   },
 };
 
