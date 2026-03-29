@@ -11,6 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kawineuy.vercel.app'), // 🔥 WAJIB
+
   title: 'The Wedding of Annida & Alif',
   description:
     'Join us in celebrating the union of Annida and Alif. Discover our love story, wedding details, and more.',
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     siteName: 'Wedding Invitation',
     images: [
       {
-        url: 'https://kawineuy.vercel.app/og-image.jpg', // 🔥 gambar preview
+        url: '/og-image.jpg', // 🔥 cukup relative karena sudah pakai metadataBase
         width: 1200,
         height: 630,
       },
@@ -35,8 +37,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'The Wedding of Annida & Alif',
-    description: 'Dengan segala hormat, kami mengundang Anda untuk hadir pada pernikahan kami dalam keberkahan Allah SWT ﷻ',
-    images: ['https://kawineuy.vercel.app/og-image.jpg'],
+    description:
+      'Dengan segala hormat, kami mengundang Anda untuk hadir pada pernikahan kami dalam keberkahan Allah SWT ﷻ',
+    images: ['/og-image.jpg'],
   },
 };
 
@@ -47,6 +50,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* 🔥 BACKUP META (ANTI GAGAL TOTAL) */}
+        <meta property="og:title" content="The Wedding of Annida & Alif" />
+        <meta property="og:description" content="Kami mengundang Anda ke hari bahagia kami" />
+        <meta property="og:image" content="https://kawineuy.vercel.app/og-image.jpg" />
+        <meta property="og:url" content="https://kawineuy.vercel.app" />
+        <meta property="og:type" content="website" />
+      </head>
+
       <body className={`${poppins.variable} antialiased`}>
         <LangProvider>
           <LocalizationProvider>
@@ -55,7 +67,7 @@ export default function RootLayout({
           </LocalizationProvider>
         </LangProvider>
 
-        {/* ⬇⬇⬇ SCRIPT MARQUEE TITLE TANPA MENGUBAH KODE ASLI ⬇⬇⬇ */}
+        {/* SCRIPT MARQUEE (TIDAK DIUBAH) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -68,8 +80,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* ⬆⬆⬆ SCRIPT MARQUEE TITLE ⬆⬆⬆ */}
-
       </body>
     </html>
   );
