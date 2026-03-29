@@ -76,14 +76,15 @@ export const LetterAnimation = ({
             transition={{ duration: 1, delay: 0.5 }}
             className="mb-8 sm:mb-12"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-serif text-gray-800 mb-4">
               {t('hero.welcome')}
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md mx-auto">
               {toName ? (
                 <>
                   {t('letter.dear')}{' '}
-                  <span className="font-medium text-rose-600">{toName}</span>
+                  <br />
+                  <span className="font-medium text-rose-600 text-xl sm:text-2xl md:text-3xl">{toName}</span>
                   <br />
                   {t('letter.you-are-invited')}
                 </>
