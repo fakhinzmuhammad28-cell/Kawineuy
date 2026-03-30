@@ -7,61 +7,32 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export const GalleryPreview = () => {
-
-  return null; // 🔥 NONAKTIF TOTAL
-
   const { t } = useTranslation('home');
 
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false, // 🔥 ANIMASI BISA TERULANG
     threshold: 0.2,
   });
 
   const [open, setOpen] = useState(false);
 
-  // ✅ GANTI EMOJI JADI IMAGE
   const galleryImages = [
-    {
-      id: 1,
-      imageUrl: '/assets/images/1.png',
-      description: t('gallery.engagement'),
-    },
-    {
-      id: 2,
-      imageUrl: '/assets/images/2.png',
-      description: t('gallery.travel'),
-    },
-    {
-      id: 3,
-      imageUrl: '/assets/images/3.png',
-      description: t('gallery.date'),
-    },
-    {
-      id: 4,
-      imageUrl: '/assets/images/4.png',
-      description: t('gallery.proposal'),
-    },
-    {
-      id: 5,
-      imageUrl: '/assets/images/5.png',
-      description: t('gallery.family'),
-    },
-    {
-      id: 6,
-      imageUrl: '/assets/images/6.png',
-      description: t('gallery.friends'),
-    },
+    { id: 1, imageUrl: '/assets/images/1.png', description: t('gallery.engagement') },
+    { id: 2, imageUrl: '/assets/images/2.png', description: t('gallery.travel') },
+    { id: 3, imageUrl: '/assets/images/3.png', description: t('gallery.date') },
+    { id: 4, imageUrl: '/assets/images/4.png', description: t('gallery.proposal') },
+    { id: 5, imageUrl: '/assets/images/5.png', description: t('gallery.family') },
+    { id: 6, imageUrl: '/assets/images/6.png', description: t('gallery.friends') },
   ];
 
   return (
-    <div
-      ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-gray-50 to-rose-50"
-    >
+    <div ref={ref} className="py-20 px-4 bg-gradient-to-br from-gray-50 to-rose-50">
       <div className="max-w-6xl mx-auto">
+        
+        {/* TITLE */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }} // 🔥 BISA ANIMASI LAGI
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -80,11 +51,14 @@ export const GalleryPreview = () => {
             <motion.div
               key={image.id}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
+              animate={
+                inView
+                  ? { opacity: 1, scale: 1 }
+                  : { opacity: 0, scale: 0.8 }
+              } // 🔥 Animasi setiap masuk viewport
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative aspect-square bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
-              {/* ✅ FOTO */}
               <div className="absolute inset-0">
                 <Image
                   src={image.imageUrl}
@@ -94,7 +68,6 @@ export const GalleryPreview = () => {
                 />
               </div>
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-end">
                 <div className="p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-xs sm:text-sm md:text-base font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
@@ -103,7 +76,6 @@ export const GalleryPreview = () => {
                 </div>
               </div>
 
-              {/* Decorative corner */}
               <div className="absolute top-2 right-2 w-6 h-6 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.div>
           ))}
@@ -112,7 +84,7 @@ export const GalleryPreview = () => {
         {/* BUTTON */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-12"
         >
@@ -130,12 +102,10 @@ export const GalleryPreview = () => {
         </motion.div>
       </div>
 
-      {/* ✅ LIGHTBOX */}
+      {/* LIGHTBOX */}
       {open && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-5xl w-full">
-            
-            {/* Close */}
             <button
               onClick={() => setOpen(false)}
               className="absolute -top-10 right-0 text-white text-2xl"
@@ -143,7 +113,6 @@ export const GalleryPreview = () => {
               ✕
             </button>
 
-            {/* Full Gallery */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.map((image) => (
                 <div key={image.id} className="relative aspect-square">
