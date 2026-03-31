@@ -69,40 +69,41 @@ export const CommentSection = () => {
               Belum ada ucapan 😇
             </p>
           ) : (
-            comments.map((c, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-4"
-              >
-                {/* AVATAR */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 text-white flex items-center justify-center font-semibold shadow-md">
-                  {getInitial(c.nama)}
-                </div>
+            comments.map((c, i) => {
+              const hadir = (c.kehadiran || '').toLowerCase().trim();
 
-                {/* BUBBLE */}
-                <div className="flex-1 bg-white/80 backdrop-blur-lg rounded-2xl px-5 py-4 shadow-md border border-rose-100 hover:shadow-lg transition-all duration-300">
-                  <p className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
-                    {c.nama}
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="flex items-start gap-4"
+                >
+                  {/* AVATAR */}
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 text-white flex items-center justify-center font-semibold shadow-md">
+                    {getInitial(c.nama)}
+                  </div>
 
-                    {c.kehadiran === 'yes' ? (
-                      <span className="text-green-500 text-xs flex items-center gap-1">
-                        (Hadir👍)
-                      </span>
-                    ) : (
-                      <span className="text-red-500 text-xs flex items-center gap-1">
-                        (Tidak Hadir😭)
-                      </span>
-                    )}
-                  </p>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {c.pesan}
-                  </p>
-                </div>
-              </motion.div>
-            ))
+                  {/* BUBBLE */}
+                  <div className="flex-1 bg-white/80 backdrop-blur-lg rounded-2xl px-5 py-4 shadow-md border border-rose-100 hover:shadow-lg transition-all duration-300">
+                    <p className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
+                      {c.nama}
+
+                      {hadir === 'yes' ? (
+                        <span className="text-green-500 text-xs">(Hadir👍)</span>
+                      ) : (
+                        <span className="text-red-500 text-xs">(Tidak Hadir😭)</span>
+                      )}
+                    </p>
+
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {c.pesan}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })
           )}
         </div>
 
