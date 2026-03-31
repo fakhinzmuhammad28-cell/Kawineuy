@@ -23,16 +23,23 @@ export const RSVP = () => {
     threshold: 0.2,
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   try {
+    const payload = {
+      ...formData,
+      guests: formData.attendance === 'yes' ? formData.guests : '0', // 🔥 FIX TAMU
+    };
+
     await fetch('https://script.google.com/macros/s/AKfycbynJ3zwstgyVsiZeI1GsB7ml-wlGJnFOxTgFziI1-MwOAjxFwexoXcyqMq6XznVdz_0/exec', {
       method: 'POST',
-      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json', // 🔥 WAJIB INI
+      },
+      body: JSON.stringify(payload), // 🔥 PAKAI PAYLOAD
     });
 
-    // tetap pakai logic lama (TIDAK DIHAPUS)
     setIsSubmitted(true);
 
     setTimeout(() => {
@@ -50,7 +57,7 @@ export const RSVP = () => {
     console.error('Gagal kirim:', error);
   }
 };
-
+  
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
