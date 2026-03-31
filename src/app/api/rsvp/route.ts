@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export async function GET() {
   try {
     const res = await fetch(
-      'https://script.google.com/macros/s/AKfycbwgmG1fpbv-RZChCzwdULVEEKdb51TnW3nEpDbeolv2DF0Bq9u-oMxRXIMdkAHVKh9V/exec',
+      'https://script.google.com/macros/s/AKfycbynJ3zwstgyVsiZeI1GsB7ml-wlGJnFOxTgFziI1-MwOAjxFwexoXcyqMq6XznVdz_0/exec',
       {
         method: 'GET',
         cache: 'no-store',
