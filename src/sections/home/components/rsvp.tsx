@@ -32,7 +32,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       guests: formData.attendance === 'yes' ? formData.guests : '0', // 🔥 FIX TAMU
     };
 
-    await fetch('https://script.google.com/macros/s/AKfycbynJ3zwstgyVsiZeI1GsB7ml-wlGJnFOxTgFziI1-MwOAjxFwexoXcyqMq6XznVdz_0/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbwT1W76Pplcy9MYTscUHEDL0J5MWDBcKNNlfzSBoj5EeRDKADibuDACOmobb2UQV48I/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // 🔥 WAJIB INI
